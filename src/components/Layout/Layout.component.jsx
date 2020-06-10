@@ -9,11 +9,11 @@ const LayoutComponent = () => {
       <HeaderComponent />
       <Switch>
         <Route
-          path='/app/main'
+          path='/app'
           exact
-          render={() => <Redirect to='/app/main/dashboard' />}
+          render={() => <Redirect to='/app/dashboard' />}
         />
-        <Route path='/app/main/dashboard' exact component={ProductPage} />
+        <Route path='/app/products' exact component={ProductPage} />
       </Switch>
     </Fragment>
   );

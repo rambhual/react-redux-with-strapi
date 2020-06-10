@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export const ProductPage = () => {
-    return (
-        <div>
-            <h2>Welcome to product page</h2>
-        </div>
-    )
-}
+  return (
+    <div className='container mt-3'>
+      <h2>Welcome to product page</h2>
+    </div>
+  );
+};

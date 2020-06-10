@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Collapse,
   Navbar,
@@ -9,26 +10,43 @@ import {
   NavLink,
   NavbarText,
   Container,
-} from "reactstrap";
+} from 'reactstrap';
+import { logoutUser } from '../../store/actions/user.actions';
+import { useHistory, Link } from 'react-router-dom';
 
-const HeaderComponent = () => {
+const HeaderComponent = (props) => {
+  const { userInfo } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   return (
-    <Navbar color="light" light expand="md">
+    <Navbar color='light' light expand='md'>
       <Container>
-        <NavbarBrand href="/">React Redux</NavbarBrand>
+        <NavbarBrand href='/'>React Redux</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className='mr-auto' navbar>
             <NavItem>
-              <NavLink href="/">Home</NavLink>
+              <NavLink tag={Link} exact to='/app/'>
+                Home
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/products/">Product</NavLink>
+              <NavLink tag={Link} exact to='/app/products'>
+                Product
+              </NavLink>
             </NavItem>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
+          <NavbarText>Welcome {userInfo.username}</NavbarText>
+          <NavLink
+            style={{ cursor: 'pointer' }}
+            onClick={() => {
+              dispatch(logoutUser());
+              history.push('/login');
+            }}>
+            Logout
+          </NavLink>
         </Collapse>
       </Container>
     </Navbar>
