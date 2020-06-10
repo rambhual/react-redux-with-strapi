@@ -1,0 +1,5 @@
+{
+  "name": "layout",
+  "private": true,
+  "main": "./Layout.component.jsx"
+}
