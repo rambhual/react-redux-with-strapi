@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { isAuthenticated } from "./utils/auth";
 import LayoutComponent from "./components/Layout/Layout.component";
 import RegisterPage from "./container/Register.page";
@@ -20,6 +20,8 @@ const PrivateRoute = ({ dispatch, component, ...rest }) => {
 };
 
 const App = (props) => {
+  console.log(props);
+  
   return (
     <>
       <Switch>
@@ -39,4 +41,4 @@ const App = (props) => {
   );
 };
 
-export default App;
+export default withRouter(App);
