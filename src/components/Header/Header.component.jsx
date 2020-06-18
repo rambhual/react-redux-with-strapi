@@ -28,12 +28,12 @@ const HeaderComponent = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className='mr-auto' navbar>
             <NavItem>
-              <NavLink tag={Link} exact to='/app/'>
+              <NavLink tag={Link} to='/app/'>
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} exact to='/app/products'>
+              <NavLink tag={Link} to='/app/products'>
                 Product
               </NavLink>
             </NavItem>

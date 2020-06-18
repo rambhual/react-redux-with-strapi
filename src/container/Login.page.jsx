@@ -15,7 +15,7 @@ const LoginPage = (props) => {
     mode: 'onChange',
     reValidateMode: 'onChange',
     defaultValues: {
-      identifier: 'anitasahani@gmail.com',
+      identifier: 'anita',
       password: 'anita@1234',
     },
   });

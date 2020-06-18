@@ -62,6 +62,7 @@ export function receiveToken(token) {
 
 export const userLogin = (creds) => async (dispatch) => {
   try {
+    debugger;
     dispatch(requestLogin());
     const { data } = await axios.post('/auth/local', creds);
     dispatch(receiveToken(data));
