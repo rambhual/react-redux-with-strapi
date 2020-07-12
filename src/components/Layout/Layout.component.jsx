@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
-import HeaderComponent from '../Header/Header.component';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { ProductPage } from '../../container/Product.page';
+import React, { Fragment } from "react";
+import HeaderComponent from "../Header/Header.component";
+import { Switch, Route, Redirect } from "react-router-dom";
+import Products from "../../container/Products/Products";
 
 const LayoutComponent = () => {
   return (
@@ -9,11 +9,11 @@ const LayoutComponent = () => {
       <HeaderComponent />
       <Switch>
         <Route
-          path='/app'
+          path="/app"
           exact
-          render={() => <Redirect to='/app/dashboard' />}
+          render={() => <Redirect to="/app/dashboard" />}
         />
-        <Route path='/app/products' exact component={ProductPage} />
+        <Route path="/app/products" exact component={Products} />
       </Switch>
     </Fragment>
   );

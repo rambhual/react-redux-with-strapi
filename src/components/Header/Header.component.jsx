@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Collapse,
   Navbar,
@@ -10,9 +10,9 @@ import {
   NavLink,
   NavbarText,
   Container,
-} from 'reactstrap';
-import { logoutUser } from '../../store/actions/user.actions';
-import { useHistory, Link } from 'react-router-dom';
+} from "reactstrap";
+import { logoutUser } from "../../store/actions/user";
+import { useHistory, Link } from "react-router-dom";
 
 const HeaderComponent = (props) => {
   const { userInfo } = useSelector((state) => state.user);
@@ -21,30 +21,31 @@ const HeaderComponent = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   return (
-    <Navbar color='light' light expand='md'>
+    <Navbar color="light" light expand="md">
       <Container>
-        <NavbarBrand href='/'>React Redux</NavbarBrand>
+        <NavbarBrand href="/">React Redux</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className='mr-auto' navbar>
+          <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink tag={Link} to='/app/'>
+              <NavLink tag={Link} to="/app/">
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to='/app/products'>
+              <NavLink tag={Link} to="/app/products">
                 Product
               </NavLink>
             </NavItem>
           </Nav>
           <NavbarText>Welcome {userInfo.username}</NavbarText>
           <NavLink
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             onClick={() => {
               dispatch(logoutUser());
-              history.push('/login');
-            }}>
+              history.push("/login");
+            }}
+          >
             Logout
           </NavLink>
         </Collapse>
