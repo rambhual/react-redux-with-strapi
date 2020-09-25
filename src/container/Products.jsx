@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./Products.css";
-import { fetchProducts } from "../../store/actions/product";
-import ProductItem from "../../components/ProductItem";
-const Products = (props) => {
+
+import { fetchProducts } from "../store/actions/product";
+import ProductItem from "../components/ProductItem";
+
+const Products = () => {
   const dispatch = useDispatch();
-  const { products, loading, errorMessage } = useSelector(
-    (state) => state.product
-  );
+  const { products } = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(fetchProducts());
     return () => {};
@@ -15,9 +14,9 @@ const Products = (props) => {
   return (
     <div className="container mt-3">
       <div className="row">
-        {products.map((p) => (
-          <div className="col-4 mt-1" key={p.id}>
-            <ProductItem {...p} />
+        {products.map((product) => (
+          <div className="col-4 mt-1" key={product.id}>
+            <ProductItem {...product} />
           </div>
         ))}
       </div>

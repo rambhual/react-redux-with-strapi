@@ -1,22 +1,19 @@
 import React, { Fragment } from "react";
 import HeaderComponent from "../Header/Header.component";
-import { Switch, Route, Redirect } from "react-router-dom";
-import Products from "../../container/Products/Products";
+import { Switch, Route } from "react-router-dom";
+import Products from "../../container/Products";
+import HomePage from "../../container/Home.page";
 
-const LayoutComponent = () => {
+const Layout = () => {
   return (
     <Fragment>
       <HeaderComponent />
       <Switch>
-        <Route
-          path="/app"
-          exact
-          render={() => <Redirect to="/app/dashboard" />}
-        />
+        <Route path="/app/dashboard" exact component={HomePage} />
         <Route path="/app/products" exact component={Products} />
       </Switch>
     </Fragment>
   );
 };
 
-export default LayoutComponent;
+export default Layout;

@@ -1,11 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
-} from '../constant-types/user.types';
+} from "../constant-types/user.types";
 
 function requestLogin() {
   return {
@@ -43,28 +43,27 @@ export function receiveLogout() {
 export function logoutUser() {
   return (dispatch) => {
     dispatch(requestLogout());
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    axios.defaults.headers.common['Authorization'] = '';
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    document.cookie = "token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    axios.defaults.headers.common["Authorization"] = "";
     dispatch(receiveLogout());
   };
 }
 
 export function receiveToken(token) {
   return (dispatch) => {
-    localStorage.setItem('token', token.jwt);
-    localStorage.setItem('user', JSON.stringify(token.user));
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token.jwt;
+    localStorage.setItem("token", token.jwt);
+    localStorage.setItem("user", JSON.stringify(token.user));
+    axios.defaults.headers.common["Authorization"] = "Bearer " + token.jwt;
     dispatch(receiveLogin(token.user));
   };
 }
 
 export const userLogin = (creds) => async (dispatch) => {
   try {
-    debugger;
     dispatch(requestLogin());
-    const { data } = await axios.post('/auth/local', creds);
+    const { data } = await axios.post("/auth/local", creds);
     dispatch(receiveToken(data));
   } catch (error) {
     dispatch(loginError(error.message));

@@ -15,10 +15,6 @@ const LoginPage = () => {
   const { register, errors, handleSubmit } = useForm({
     mode: "onChange",
     reValidateMode: "onChange",
-    defaultValues: {
-      identifier: "anita",
-      password: "anita@1234",
-    },
   });
   const onSubmit = (data) => {
     dispatch(userLogin(data));
